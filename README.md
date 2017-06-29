@@ -1,24 +1,13 @@
-# README
+# Listpump (aka reddit-watchlist)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This utility allows creating:
 
-Things you may want to cover:
+* **Named lists**, like "people who main Hanzo", and
+* **Triggers**, which live on lists and "activate" when they match chatter online to automatically add users to their associated list
 
-* Ruby version
+A trigger comes in two pairs:
 
-* System dependencies
+* A `search_query`, which is used to filter the social firehose to related communication
+* A regex `pattern`, which determines whether any particular message activates the trigger
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Readme TBD

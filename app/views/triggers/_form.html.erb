@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :pattern %>
-    <%= f.text_field :pattern %>
+    /<%= f.text_field :pattern, class: 'inline-form-control has-unstyled-class' %>/
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :list_id %>
-    <%= f.text_field :list_id %>
+    <%= f.text_field :list_id, value: f.object.list_id || params[:list_id], class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Create', class: 'btn btn-primary' %>
   </div>
 <% end %>

@@ -9,6 +9,13 @@
   </head>
 
   <body>
+
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <%= link_to 'reddit-watchlist', root_path, class: 'navbar-brand' %>
+    </nav>
+
+    <p id="notice"><%= notice %></p>
+
     <%= yield %>
   </body>
 </html>

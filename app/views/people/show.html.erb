@@ -1,14 +1,26 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @person.name %>
-</p>
+  <small>(<%= @person.medium %>)</small>
+</h1>
 
-<p>
-  <strong>Medium:</strong>
-  <%= @person.medium %>
-</p>
+<h2>Lists</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+  <tbody>
+    <% @person.lists.each do |list| %>
+      <tr>
+        <td><%= link_to list.name, list %></td>
+        <td>names <%= pluralize list.persons.count, 'person' %></td>
+        <td><%= link_to 'Edit', edit_list_path(list) %></td>
+        <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

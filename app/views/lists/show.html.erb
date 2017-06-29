@@ -9,17 +9,28 @@
     <tr>
       <th>Name</th>
       <th>Medium</th>
+      <th>Triggered phrases</th>
       <th>Metadata</th>
       <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @people.each do |person| %>
+    <% @people.order(:name).each do |person| %>
       <tr>
         <td><%= link_to person.name, person %></td>
         <td><%= person.medium %></td>
-        <td>on <%= pluralize ListInclusion.where(person: person).count, 'list' %></td>
+        <td>
+          <ul>
+            <% person.list_inclusions.each do |list_inclusion| %>
+              <li>
+                <%= list_inclusion.matched_text %>
+                (<%= link_to list_inclusion.trigger.name, list_inclusion.trigger %>)
+              </li>
+            <% end %>
+          </ul>
+        </td>
+        <td>on <%= pluralize person.list_inclusions.count, 'list' %></td>
         <td><%= link_to 'Edit', edit_person_path(person) %></td>
         <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -43,7 +54,7 @@
   </thead>
 
   <tbody>
-    <% @triggers.each do |trigger| %>
+    <% @triggers.order(:name).each do |trigger| %>
       <tr>
         <td><%= trigger.name %></td>
         <td><%= trigger.search_query %></td>

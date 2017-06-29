@@ -6,7 +6,7 @@ class Trigger < ApplicationRecord
 
   def run
     RedditSearchService.search(self.search_query).map do |search_result|
-      if matchdata = Regexp.new(self.pattern).match(search_result.title + search_result.selftext)
+      if matchdata = Regexp.new(self.pattern, Regexp::IGNORECASE).match(search_result.title + search_result.selftext)
         matched_substring = matchdata[0]
 
         ListInclusion.find_or_create_by(

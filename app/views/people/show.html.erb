@@ -13,7 +13,7 @@
   </thead>
 
   <tbody>
-    <% @person.lists.each do |list| %>
+    <% @person.lists.uniq.each do |list| %>
       <tr>
         <td><%= link_to list.name, list %></td>
         <td>names <%= pluralize list.persons.count, 'person' %></td>

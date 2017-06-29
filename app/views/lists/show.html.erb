@@ -16,7 +16,7 @@
   </thead>
 
   <tbody>
-    <% @people.order(:name).each do |person| %>
+    <% @people.uniq.order(:name).each do |person| %>
       <tr>
         <td><%= link_to person.name, person %></td>
         <td><%= person.medium %></td>
@@ -30,7 +30,7 @@
             <% end %>
           </ul>
         </td>
-        <td>on <%= pluralize person.list_inclusions.count, 'list' %></td>
+        <td>on <%= pluralize person.lists.uniq.count, 'list' %></td>
         <td><%= link_to 'Edit', edit_person_path(person) %></td>
         <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

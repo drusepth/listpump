@@ -10,15 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170629132514) do
+ActiveRecord::Schema.define(version: 20170629150504) do
 
   create_table "list_inclusions", force: :cascade do |t|
     t.integer  "list_id"
     t.integer  "person_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "matched_text"
+    t.integer  "trigger_id"
     t.index ["list_id"], name: "index_list_inclusions_on_list_id"
     t.index ["person_id"], name: "index_list_inclusions_on_person_id"
+    t.index ["trigger_id"], name: "index_list_inclusions_on_trigger_id"
   end
 
   create_table "lists", force: :cascade do |t|
@@ -38,8 +41,9 @@ ActiveRecord::Schema.define(version: 20170629132514) do
     t.string   "name"
     t.string   "pattern"
     t.integer  "list_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "search_query"
     t.index ["list_id"], name: "index_triggers_on_list_id"
   end
 

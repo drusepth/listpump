@@ -36,7 +36,8 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Pattern</th>
+      <th>Search Query</th>
+      <th>Match Pattern</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -45,6 +46,7 @@
     <% @triggers.each do |trigger| %>
       <tr>
         <td><%= trigger.name %></td>
+        <td><%= trigger.search_query %></td>
         <td>/<%= trigger.pattern %>/</td>
         <td><%= link_to 'Edit', edit_trigger_path(trigger) %></td>
         <td><%= link_to 'Destroy', trigger, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -1,0 +1,32 @@
+<%= form_for(trigger) do |f| %>
+  <% if trigger.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(trigger.errors.count, "error") %> prohibited this trigger from being saved:</h2>
+
+      <ul>
+      <% trigger.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pattern %>
+    <%= f.text_field :pattern %>
+  </div>
+
+  <div class="field">
+    <%= f.label :list_id %>
+    <%= f.text_field :list_id %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

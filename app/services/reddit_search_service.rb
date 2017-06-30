@@ -16,7 +16,7 @@ class RedditSearchService < Service
   end
 
   def self.search(query_string)
-    client.search query_string, { sort: :new }
+    client.search "\"#{query_string}\"", { sort: :new }
 
   rescue HTTP::TimeoutError
     self.retry

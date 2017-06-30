@@ -8,7 +8,8 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th colspan="3"></th>
+      <th>Triggered phrases</th>
+      <th>List stats</th>
     </tr>
   </thead>
 
@@ -16,9 +17,14 @@
     <% @person.lists.uniq.each do |list| %>
       <tr>
         <td><%= link_to list.name, list %></td>
+        <td>
+          <ul>
+            <% @person.list_inclusions.where(list: list).each do |list_inclusion| %>
+              <li>"<%= list_inclusion.matched_text %>" (<%= link_to list_inclusion.trigger.name, list_inclusion.trigger %>)</li>
+            <% end %>
+          </ul>
+        </td>
         <td>names <%= pluralize list.persons.count, 'person' %></td>
-        <td><%= link_to 'Edit', edit_list_path(list) %></td>
-        <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

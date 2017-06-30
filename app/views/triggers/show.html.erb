@@ -1,22 +1,13 @@
-<p>
-  <strong>Name:</strong>
-  <%= @trigger.name %>
-</p>
-
-<p>
-  <strong>Search Query:</strong>
-  <%= @trigger.search_query %>
-</p>
-
-<p>
-  <strong>Pattern:</strong>
-  <%= @trigger.pattern %>
-</p>
-
-<p>
-  <strong>List:</strong>
-  <%= @trigger.list %>
-</p>
-
-<%= link_to 'Edit', edit_trigger_path(@trigger) %> |
-<%= link_to 'Back', triggers_path %>
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title"><%= @trigger.name %></h4>
+    <h6 class="card-subtitle mb-2 text-muted">
+      <%= @trigger.list.name %>
+    </h6>
+    <p class="card-text">
+      <p>Query: <%= @trigger.search_query %></p>
+      <p>Regex: /<%= @trigger.pattern %>/</p>
+    </p>
+    <%= link_to 'Edit', edit_trigger_path(@trigger), class: 'card-link' %>
+  </div>
+</div>

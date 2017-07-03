@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RedditWatchlist</title>
+    <title>Listpump</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -11,9 +11,10 @@
   <body>
 
     <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-      <%= link_to 'reddit-watchlist', root_path, class: 'navbar-brand' %>
+      <%= link_to 'Listpump', root_path, class: 'navbar-brand' %>
     </nav>
 
+    <br />
     <div class="container">
       <% if notice %>
         <div class="alert alert-info alert-dismissible fade show" role="alert">

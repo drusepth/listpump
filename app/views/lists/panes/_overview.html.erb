@@ -1,0 +1,44 @@
+<br />
+<div class="jumbotron">
+  <h1 class="display-4">
+    <%= list.name %>
+  </h1>
+  <p class="lead text-justify">
+    <%= list.description || 'This is a list managed by Listpump.' %>
+  </p>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-6">
+    <div class="card">
+      <div class="card-header">
+        Triggers
+        <span class="badge badge-default <%= list.triggers.any? ? 'badge-success' : 'badge-danger' %>">
+          <%= list.triggers.count %> configured
+        </span>
+      </div>
+      <div class="card-block">
+        <p class="card-text">
+          When someone says something on social media that activates a list's trigger, Listpump will automatically add them to that list.
+        </p>
+        <%= link_to 'Add a trigger', new_trigger_path(list_id: list.id), class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-6">
+    <div class="card">
+      <div class="card-header">
+        People
+        <span class="badge badge-default <%= list.persons.any? ? 'badge-success' : 'badge-danger' %>">
+          <%= list.persons.count %> on this list
+        </span>
+      </div>
+      <div class="card-block">
+        <p class="card-text">
+          When someone says something on social media that activates a list's trigger, Listpump will automatically add them to that list.
+        </p>
+        <%= link_to 'Add a trigger', new_trigger_path(list_id: list.id), class: "btn" %>
+      </div>
+    </div>
+  </div>
+</div>

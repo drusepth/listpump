@@ -1,0 +1,39 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Medium</th>
+      <th>Triggered phrases</th>
+      <th>Other lists</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% people.order(:name).each do |person| %>
+      <tr>
+        <td><%= link_to person.name, person %></td>
+        <td><span class="badge badge-default"><%= link_to person.medium, "https://www.reddit.com/u/#{person.name}", class: 'text-white' %></span></td>
+        <td>
+          <ul>
+            <% person.list_inclusions.each do |list_inclusion| %>
+              <% next unless list_inclusion.list == list %>
+              <li>
+                "<%= list_inclusion.matched_text %>" (<%= link_to list_inclusion.trigger.name, list_inclusion.trigger %>)
+              </li>
+            <% end %>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <% person.lists.reject { |person_list| person_list == list }.uniq.each do |list| %>
+              <li><%= link_to list.name, list %></li>
+            <% end %>
+          </ul>
+        </td>
+        <td><%# link_to 'Edit', edit_person_path(person) %></td>
+        <td><%# link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,32 +1,32 @@
+<br />
 <h1>
   <%= @person.name %>
-  <small>(<%= @person.medium %>)</small>
+  <span class="badge badge-default float-right">
+    <%= link_to @person.medium, "https://www.reddit.com/u/#{@person.name}", class: 'text-white' %>
+  </span>
 </h1>
+<br />
 
-<h2>Lists</h2>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Triggered phrases</th>
-      <th>List stats</th>
-    </tr>
-  </thead>
+<ul class="nav nav-tabs" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Overview</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#lists" role="tab">
+      Lists
+      <span class="badge badge-default <%= @person.lists.any? ? 'badge-success' : 'badge-danger' %>"><%= @person.lists.count %></span>
+    </a>
+  </li>
+</ul>
 
-  <tbody>
-    <% @person.lists.uniq.each do |list| %>
-      <tr>
-        <td><%= link_to list.name, list %></td>
-        <td>
-          <ul>
-            <% @person.list_inclusions.where(list: list).each do |list_inclusion| %>
-              <li>"<%= list_inclusion.matched_text %>" (<%= link_to list_inclusion.trigger.name, list_inclusion.trigger %>)</li>
-            <% end %>
-          </ul>
-        </td>
-        <td>names <%= pluralize list.persons.count, 'person' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="home" role="tabpanel">
+    <%= render partial: 'people/panes/overview', locals: { person: @person } %>
+  </div>
+  <div class="tab-pane" id="lists" role="tabpanel">
+    <%= render partial: 'people/panes/lists', locals: { person: @person } %>
+  </div>
+</div>
+
 

@@ -1,0 +1,15 @@
+<br />
+<h2>Recent list inclusions</h2>
+<ul class="list-group">
+  <% person.list_inclusions.each do |list_inclusion| %>
+    <li class="list-group-item">
+      <div>
+        Added to list <%= link_to list_inclusion.list.name, list_inclusion.list %>
+        <%= time_ago_in_words list_inclusion.created_at %> ago.
+      </div>
+      <div class="text-muted">
+        Matched phrase: "<%= list_inclusion.matched_text %>" on reddit.
+      </div>
+    </li>
+  <% end %>
+</ul>

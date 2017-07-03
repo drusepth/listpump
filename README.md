@@ -1,4 +1,4 @@
-# Listpump (aka reddit-watchlist)
+# Listpump
 
 This utility allows creating:
 

@@ -4,6 +4,8 @@ class Trigger < ApplicationRecord
   validates_presence_of :list, :search_query
   before_save :validate_pattern_as_regexp
 
+  has_many :list_inclusions, dependent: :destroy
+
   def run
     RedditSearchService.search(self.search_query).map do |search_result|
       if matchdata = Regexp.new(self.pattern, Regexp::IGNORECASE).match(search_result.title + search_result.selftext)

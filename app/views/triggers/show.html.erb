@@ -32,7 +32,7 @@
       <h5 class="card-title">People matched</h5>
 
       <ul>
-        <% @trigger.people.uniq.each do |person| %>
+        <% @trigger.people.uniq.sort.each do |person| %>
           <li><%= link_to person.name, person %></li>
         <% end %>
       </ul>
@@ -44,7 +44,7 @@
       <h5 class="card-title">Text matched</h5>
 
       <ul>
-        <% @trigger.list_inclusions.pluck(:matched_text).uniq.each do |matched_text| %>
+        <% @trigger.list_inclusions.pluck(:matched_text).uniq.sort.each do |matched_text| %>
           <li><%= matched_text %></li>
         <% end %>
       </ul>

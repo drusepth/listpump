@@ -15,4 +15,5 @@
 //= require turbolinks
 //= require popper
 //= require bootstrap-sprockets
+//= require bootstrap-toggle
 //= require_tree .

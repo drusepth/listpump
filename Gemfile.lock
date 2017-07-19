@@ -9,6 +9,7 @@ GIT
 
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actioncable (5.0.4)
       actionpack (= 5.0.4)
@@ -123,6 +124,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 5.0.4)
       sprockets-rails (>= 2.0.0)
+    rails-assets-bootstrap-toggle (2.2.2)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -195,6 +197,7 @@ DEPENDENCIES
   pg
   puma (~> 3.0)
   rails (~> 5.0.4)
+  rails-assets-bootstrap-toggle!
   redd
   sass-rails (~> 5.0)
   spring

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703004519) do
+ActiveRecord::Schema.define(version: 20170719115128) do
 
   create_table "list_inclusions", force: :cascade do |t|
     t.integer  "list_id"
@@ -42,9 +42,10 @@ ActiveRecord::Schema.define(version: 20170703004519) do
     t.string   "name"
     t.string   "pattern"
     t.integer  "list_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "search_query"
+    t.boolean  "enabled",      default: true
     t.index ["list_id"], name: "index_triggers_on_list_id"
   end
 

@@ -16,7 +16,9 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'redd'
+
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
+gem 'rails-assets-bootstrap-toggle', source: 'https://rails-assets.org'
 
 group :production do
   gem 'pg'

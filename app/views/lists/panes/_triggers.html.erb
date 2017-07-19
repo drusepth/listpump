@@ -30,11 +30,3 @@
 <hr />
 <h1>Add <%= triggers.any? ? 'another' : 'a' %> trigger</h1>
 <%= render partial: 'triggers/form', locals: { trigger: Trigger.new(list: @list) } %>
-
-<script type="text/javascript">
-  $(function() {
-    $('.js-submit-on-change').change(function() {
-      $(this).closest('form').submit();
-    })
-  })
-</script>

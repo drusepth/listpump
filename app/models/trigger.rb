@@ -5,6 +5,7 @@ class Trigger < ApplicationRecord
   before_save :validate_pattern_as_regexp
 
   has_many :list_inclusions, dependent: :destroy
+  has_many :people, through: :list_inclusions
 
   def run
     RedditSearchService.search(self.search_query).map do |search_result|

@@ -12,7 +12,7 @@
   <tbody>
     <% triggers.order(:name).each do |trigger| %>
       <tr>
-        <td><%= trigger.name %></td>
+        <td><%= link_to trigger.name, trigger %></td>
         <td><span class="badge badge-primary"><%= trigger.search_query %></span></td>
         <td><span class="badge badge-info">/<%= trigger.pattern %>/</span></td>
         <td>

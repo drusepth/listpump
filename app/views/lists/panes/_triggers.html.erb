@@ -27,6 +27,11 @@
   </tbody>
 </table>
 
-<hr />
-<h1>Add <%= triggers.any? ? 'another' : 'a' %> trigger</h1>
-<%= render partial: 'triggers/form', locals: { trigger: Trigger.new(list: @list) } %>
+<div class="row">
+  <div class="col-sm-12 card">
+    <div class="card-block">
+      <h5 class="card-title">Add <%= triggers.any? ? 'another' : 'a' %> trigger</h5>
+      <%= render partial: 'triggers/form', locals: { trigger: Trigger.new(list: @list) } %>
+    </div>
+  </div>
+</div>

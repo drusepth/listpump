@@ -1,25 +1,27 @@
 <div class="row">
-  <div class="card col-sm-12">
-    <div class="card-block">
-      <span class="float-right">
-        <%= form_for @trigger, remote: true, format: 'json' do |f| %>
-          <%= f.check_box :enabled, data: { toggle: 'toggle', onstyle: 'success', on: 'Active', off: 'Disabled' }, class: 'js-submit-on-change' %>
-        <% end %>
-      </span>
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-block">
+        <span class="float-right">
+          <%= form_for @trigger, remote: true, format: 'json' do |f| %>
+            <%= f.check_box :enabled, data: { toggle: 'toggle', onstyle: 'success', on: 'Active', off: 'Disabled' }, class: 'js-submit-on-change' %>
+          <% end %>
+        </span>
 
-      <h4 class="card-title"><%= @trigger.name %></h4>
-      <h6 class="card-subtitle mb-2 text-muted">
-        <%= link_to @trigger.list.name, @trigger.list %>
-      </h6>
-      <p class="card-text">
-        <p>
-          Query: <span class="badge badge-primary"><%= @trigger.search_query %></span>
+        <h4 class="card-title"><%= @trigger.name %></h4>
+        <h6 class="card-subtitle mb-2 text-muted">
+          <%= link_to @trigger.list.name, @trigger.list %>
+        </h6>
+        <p class="card-text">
+          <p>
+            Query: <span class="badge badge-primary"><%= @trigger.search_query %></span>
+          </p>
+          <p>
+            Regex: <span class="badge badge-info">/<%= @trigger.pattern %>/</span>
+          </p>
         </p>
-        <p>
-          Regex: <span class="badge badge-info">/<%= @trigger.pattern %>/</span>
-        </p>
-      </p>
-      <%= link_to 'Edit', edit_trigger_path(@trigger), class: 'card-link' %>
+        <%= link_to 'Edit', edit_trigger_path(@trigger), class: 'card-link' %>
+      </div>
     </div>
   </div>
 </div>
@@ -27,28 +29,35 @@
 <br />
 
 <div class="row">
-  <div class="col-sm-12 col-md-6 card">
-    <div class="card-block">
-      <h5 class="card-title">People matched</h5>
+  <div class="col-sm-12 col-md-6">
+    <div class="card">
+      <div class="card-block">
+        <h5 class="card-title">People matched</h5>
 
-      <ul>
-        <% @trigger.people.uniq.sort.each do |person| %>
-          <li><%= link_to person.name, person %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% @trigger.people.uniq.sort.each do |person| %>
+            <li><%= link_to person.name, person %></li>
+          <% end %>
+        </ul>
 
+      </div>
     </div>
   </div>
-  <div class="col-sm-12 col-md-6 card">
-    <div class="card-block">
-      <h5 class="card-title">Text matched</h5>
+  <div class="col-sm-12 col-md-6">
+    <div class="card">
+      <div class="card-block">
+        <h5 class="card-title">
+          <span class="badge badge-info float-right">/<%= @trigger.pattern %>/</span>
+          Text matched
+        </h5>
 
-      <ul>
-        <% @trigger.list_inclusions.pluck(:matched_text).uniq.sort.each do |matched_text| %>
-          <li><%= matched_text %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% @trigger.list_inclusions.pluck(:matched_text).uniq.sort.each do |matched_text| %>
+            <li><%= matched_text %></li>
+          <% end %>
+        </ul>
 
+      </div>
     </div>
   </div>
 </div>

@@ -28,10 +28,14 @@
 </table>
 
 <div class="row">
-  <div class="col-sm-12 card">
-    <div class="card-block">
-      <h5 class="card-title">Add <%= triggers.any? ? 'another' : 'a' %> trigger</h5>
-      <%= render partial: 'triggers/form', locals: { trigger: Trigger.new(list: @list) } %>
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-header">
+        Add <%= triggers.any? ? 'another' : 'a' %> trigger
+      </div>
+      <div class="card-block">
+        <%= render partial: 'triggers/form', locals: { trigger: Trigger.new(list: @list) } %>
+      </div>
     </div>
   </div>
 </div>

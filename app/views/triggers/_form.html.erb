@@ -48,6 +48,6 @@
   <%= f.hidden_field :list_id, value: f.object.list_id || params[:list_id], class: 'form-control' %>
 
   <div class="actions text-center">
-    <%= f.submit 'Create', class: 'btn btn-primary' %>
+    <%= f.submit(trigger.persisted? ? 'Update' : 'Create', class: 'btn btn-primary') %>
   </div>
 <% end %>

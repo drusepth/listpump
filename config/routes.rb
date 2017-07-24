@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categorizations
   resources :categories
   resources :people
   resources :triggers

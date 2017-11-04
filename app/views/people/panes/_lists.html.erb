@@ -14,7 +14,11 @@
         <td>
           <ul>
             <% person.list_inclusions.where(list: list).each do |list_inclusion| %>
-              <li>"<%= list_inclusion.matched_text %>" (<%= link_to list_inclusion.trigger.name, list_inclusion.trigger %>)</li>
+              <li>
+                "<%= list_inclusion.matched_text %>"
+                (<%= link_to list_inclusion.trigger.name, list_inclusion.trigger %>,
+                <%= link_to 'source', list_inclusion.source_url %>)
+              </li>
             <% end %>
           </ul>
         </td>

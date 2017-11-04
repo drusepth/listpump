@@ -16,7 +16,8 @@ class Trigger < ApplicationRecord
           list:         self.list,
           person:       Person.find_or_create_by(name: search_result.author.name, medium: 'reddit'),
           trigger:      self,
-          matched_text: matched_substring
+          matched_text: matched_substring,
+          source_url:   search_result.url
         )
       end
     end

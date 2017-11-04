@@ -12,4 +12,28 @@ A trigger comes in two pairs:
 
 ![List screenshot](http://i.imgur.com/MFUKJWr.png)
 
-Readme TBD
+# Development
+
+To get started:
+
+1. Clone the repo
+    git@github.com:drusepth/listpump.git
+
+2. Install dependencies
+    bundle install
+
+3. Create and migrate a local database (sqlite3)
+    rake db:create
+    rake db:migrate
+
+4. Run the server
+    rails server
+
+5. Visit your local instance and set up your lists!
+   http://localhost:3000/
+
+To run a local worker for your lists, run `rake reddit:run`. You'll need to set
+the following environment variables for your reddit API access:
+
+* REDDIT_CLIENT_ID
+* REDDIT_SECRET

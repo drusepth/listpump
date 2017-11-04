@@ -52,8 +52,8 @@
         </h5>
 
         <ul>
-          <% @trigger.list_inclusions.pluck(:matched_text).uniq.sort.each do |matched_text| %>
-            <li><%= matched_text %></li>
+          <% @trigger.list_inclusions.pluck(:matched_text, :source_url).each do |matched_text, source| %>
+            <li><%= link_to matched_text, source %></li>
           <% end %>
         </ul>
 

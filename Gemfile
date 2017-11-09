@@ -11,15 +11,12 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 
-# We now return to your regularly-scheduled gems.
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
-# Social network integrations
 gem 'redd'
 
-# Design
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 gem 'rails-assets-bootstrap-toggle', source: 'https://rails-assets.org'
 
@@ -29,14 +26,12 @@ end
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'byebug'
+  gem 'byebug', platform: :mri
 end
 
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
-  gem 'pry'
-  gem 'bullet'
   # gem 'spring'
   # gem 'spring-watcher-listen', '~> 2.0.0'
 end

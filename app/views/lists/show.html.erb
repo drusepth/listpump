@@ -3,15 +3,20 @@
     <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Overview</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#triggers" role="tab">
-      Triggers
-      <span class="badge badge-default <%= @triggers.any? ? 'badge-success' : 'badge-danger' %>"><%= @triggers.count %></span>
+    <a class="nav-link" data-toggle="tab" href="#stream" role="tab">
+      Stream
     </a>
   </li>
   <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#people" role="tab">
       People
       <span class="badge badge-default <%= @people.any? ? 'badge-success' : 'badge-danger' %>"><%= @people.count %></span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#triggers" role="tab">
+      Triggers
+      <span class="badge badge-default <%= @triggers.any? ? 'badge-success' : 'badge-danger' %>"><%= @triggers.count %></span>
     </a>
   </li>
   <li class="nav-item">
@@ -23,6 +28,9 @@
 <div class="tab-content">
   <div class="tab-pane active" id="home" role="tabpanel">
     <%= render partial: 'lists/panes/overview', locals: { list: @list, triggers: @triggers } %>
+  </div>
+  <div class="tab-pane" id="stream" role="tabpanel">
+    <%= render partial: 'lists/panes/stream', locals: { list: @list, inclusions: @inclusions } %>
   </div>
   <div class="tab-pane" id="people" role="tabpanel">
     <%= render partial: 'lists/panes/people', locals: { list: @list, people: @people } %>

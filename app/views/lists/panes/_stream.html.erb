@@ -1,0 +1,27 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% inclusions.each do |inclusion| %>
+      <tr>
+        <td>
+          <%= link_to inclusion.person.name, inclusion.person %>
+          <span class="badge badge-default"><%= link_to inclusion.person.medium, "https://www.reddit.com/u/#{inclusion.person.name}", class: 'text-white' %></span>
+          said
+          "<blockquote style="display: inline; background: lightcyan"><%= inclusion.matched_text %></blockquote>"
+          at
+          <%= link_to 'this link', inclusion.source_url %>
+          and activated
+          <%= link_to "trigger #{inclusion.trigger.name}", inclusion.trigger %>.
+          <span style="color: gray; font-size: 80%">
+            <%= time_ago_in_words inclusion.created_at %> ago
+          </span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

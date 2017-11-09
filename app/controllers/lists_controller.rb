@@ -12,6 +12,7 @@ class ListsController < ApplicationController
   def show
     @people = @list.persons.includes(:list_inclusions).uniq
     @triggers = @list.triggers
+    @inclusions = @list.list_inclusions.includes(:person)
   end
 
   # GET /lists/new

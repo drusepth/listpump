@@ -5,6 +5,7 @@
   <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#stream" role="tab">
       Stream
+      <span class="badge badge-default <%= @inclusions.any? ? 'badge-success' : 'badge-danger' %>"><%= @inclusions.count > 500 ? '500+' : @inclusions.count %></span>
     </a>
   </li>
   <li class="nav-item">

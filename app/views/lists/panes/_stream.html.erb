@@ -15,8 +15,9 @@
           "<blockquote style="display: inline; background: lightcyan"><%= inclusion.matched_text %></blockquote>"
           at
           <%= link_to 'this link', inclusion.source_url %>
-          and activated
-          <%= link_to "trigger #{inclusion.trigger.name}", inclusion.trigger %>.
+          and activated the
+          <%= link_to inclusion.trigger.name, inclusion.trigger %>
+          trigger.
           <span style="color: gray; font-size: 80%">
             <%= time_ago_in_words inclusion.created_at %> ago
           </span>

@@ -32,5 +32,11 @@
 
       <%= yield %>
     </div>
+
+    <div class="footer">
+      <div class="versionstring">
+        v<%= `git log | grep commit | wc -l`.strip %> <%= `git log | head -n 1` %>
+      </div>
+    </div>
   </body>
 </html>

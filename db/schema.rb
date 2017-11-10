@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171110012313) do
+ActiveRecord::Schema.define(version: 20171110145312) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20171110012313) do
     t.integer  "trigger_id"
     t.string   "source_url"
     t.datetime "posted_at"
+    t.string   "trapped_text"
     t.index ["list_id"], name: "index_list_inclusions_on_list_id"
     t.index ["person_id"], name: "index_list_inclusions_on_person_id"
     t.index ["trigger_id"], name: "index_list_inclusions_on_trigger_id"

@@ -10,8 +10,8 @@ class ListsController < ApplicationController
   # GET /lists/1
   # GET /lists/1.json
   def show
-    @people = @list.persons.includes(:list_inclusions).uniq
-    @triggers = @list.triggers
+    @people     = @list.persons.includes(:list_inclusions).uniq
+    @triggers   = @list.triggers
     @inclusions = @list.list_inclusions.includes(:person).order('posted_at desc')
   end
 

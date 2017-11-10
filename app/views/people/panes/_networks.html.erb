@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Network</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= link_to person.name, "https://www.reddit.com/u/#{person.name}" %></td>
+      <td>
+        <span class="badge badge-default">
+          <%= link_to @person.medium, "https://www.reddit.com/u/#{@person.name}", class: 'text-white' %>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

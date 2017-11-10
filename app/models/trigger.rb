@@ -17,7 +17,8 @@ class Trigger < ApplicationRecord
           person:       Person.find_or_create_by(name: search_result.author.name, medium: 'reddit'),
           trigger:      self,
           matched_text: matched_substring,
-          source_url:   "https://www.reddit.com#{search_result.permalink}"
+          source_url:   "https://www.reddit.com#{search_result.permalink}",
+          posted_at:    Time.at(search_result.created)
         )
       end
     end

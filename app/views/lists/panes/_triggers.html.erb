@@ -4,6 +4,7 @@
       <th>Name</th>
       <th>Search Query</th>
       <th>Match Pattern</th>
+      <th>Trigger Confidence</th>
       <th>Active</th>
       <th colspan="3"></th>
     </tr>
@@ -15,6 +16,7 @@
         <td><%= link_to trigger.name, trigger %></td>
         <td><span class="badge badge-primary"><%= trigger.search_query %></span></td>
         <td><span class="badge badge-info">/<%= trigger.pattern %>/</span></td>
+        <td><span class="badge badge-danger"><%= trigger.confidence %></span></td>
         <td>
           <%= form_for trigger, remote: true, format: 'json' do |f| %>
             <%= f.check_box :enabled, data: { toggle: 'toggle', onstyle: 'success', size: 'small' }, class: 'js-submit-on-change' %>

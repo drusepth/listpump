@@ -19,6 +19,9 @@
           <p>
             Regex: <span class="badge badge-info">/<%= @trigger.pattern %>/</span>
           </p>
+          <p>
+            Confidence: <span class="badge badge-danger"><%= @trigger.confidence %></span>
+          </p>
         </p>
         <%= link_to 'Edit', edit_trigger_path(@trigger), class: 'card-link' %>
       </div>

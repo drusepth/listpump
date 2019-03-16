@@ -69,6 +69,6 @@ class TriggersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trigger_params
-      params.require(:trigger).permit(:name, :pattern, :search_query, :list_id, :enabled)
+      params.require(:trigger).permit(:name, :pattern, :search_query, :list_id, :confidence, :enabled)
     end
 end

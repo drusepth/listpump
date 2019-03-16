@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Medium</th>
+      <th>Confidence</th>
       <th>Triggered phrases</th>
       <th>Other lists</th>
       <th colspan="2"></th>
@@ -12,8 +12,16 @@
   <tbody>
     <% people.order(:name).each do |person| %>
       <tr>
-        <td><%= link_to person.name, person %></td>
-        <td><span class="badge badge-default"><%= link_to person.medium, "https://www.reddit.com/u/#{person.name}", class: 'text-white' %></span></td>
+        <td>
+          <%= link_to person.name, person %>
+          <span class="badge badge-default"><%= link_to person.medium, "https://www.reddit.com/u/#{person.name}", class: 'text-white' %></span>
+        </td>
+        <td>
+          <span class="badge badge-danger">
+            <%# TODO: Performance code smell %>
+            <%= Trigger.where(id: person.list_inclusions.where(list_id: list.id).pluck(:trigger_id)).sum(:confidence) %>
+          </span>
+        </td>
         <td>
           <ul>
             <% person.list_inclusions.each do |list_inclusion| %>

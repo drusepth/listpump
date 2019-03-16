@@ -21,6 +21,12 @@
     </a>
   </li>
   <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#sublists" role="tab">
+      Sub-lists
+      <span class="badge badge-default badge-info"><%= List.where(parent_list_id: @list.id).count %></span>
+    </a>
+  </li>
+  <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a>
   </li>
 </ul>
@@ -38,6 +44,9 @@
   </div>
   <div class="tab-pane" id="triggers" role="tabpanel">
     <%= render partial: 'lists/panes/triggers', locals: { list: @list, triggers: @triggers } %>
+  </div>
+  <div class="tab-pane" id="sublists" role="tabpanel">
+    <%= render partial: 'lists/panes/sublists', locals: { list: @list } %>
   </div>
   <div class="tab-pane" id="settings" role="tabpanel">
     <%= render partial: 'lists/panes/settings', locals: { list: @list } %>

@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col-6">
+    <h3>Parent Lists</h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Size</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @parent_lists.order(:name).each do |list| %>
+          <tr>
+            <td><%= link_to list.name, list %></td>
+            <td>names <%= pluralize list.persons.count, 'person' %></td>
+            <td><%# link_to 'Edit', edit_list_path(list) %></td>
+            <td><%# link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-6">
+    <h3>Child Lists</h3>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Size</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @child_lists.order(:name).each do |list| %>
+          <tr>
+            <td><%= link_to list.name, list %></td>
+            <td>names <%= pluralize list.persons.count, 'person' %></td>
+            <td><%# link_to 'Edit', edit_list_path(list) %></td>
+            <td><%# link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<h3>Sibling lists</h3>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Size</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sibling_lists.each do |list| %>
+      <tr>
+        <td><%= link_to list.name, list %></td>
+        <td>names <%= pluralize list.persons.count, 'person' %></td>
+        <td><%# link_to 'Edit', edit_list_path(list) %></td>
+        <td><%# link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

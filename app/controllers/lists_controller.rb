@@ -4,15 +4,19 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
+    lists_with_parents = FamilialListRelationship.pluck(:parent_list_id)
     @lists = List.all
   end
 
   # GET /lists/1
   # GET /lists/1.json
   def show
-    @people     = @list.persons.includes(:list_inclusions).uniq
-    @triggers   = @list.triggers
-    @inclusions = @list.list_inclusions.includes(:person).order('posted_at desc')
+    @people        = @list.persons.includes(:list_inclusions).uniq
+    @triggers      = @list.triggers
+    @inclusions    = @list.list_inclusions.includes(:person).order('posted_at desc')
+    @parent_lists  = @list.parent_lists
+    @child_lists   = @list.child_lists
+    @sibling_lists = @list.sibling_lists
   end
 
   # GET /lists/new

@@ -22,8 +22,8 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#sublists" role="tab">
-      Sub-lists
-      <span class="badge badge-default badge-info"><%= List.where(parent_list_id: @list.id).count %></span>
+      Related lists
+      <span class="badge badge-default badge-info"><%# List.where(parent_list_id: @list.id).count %></span>
     </a>
   </li>
   <li class="nav-item">

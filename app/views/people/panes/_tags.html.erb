@@ -9,8 +9,10 @@
   <tbody>
     <% tags.each do |person_tag| %>
       <tr>
-        <td><%= person_tag.tag %></td>
-        <td><%= link_to person_tag.trigger.name, person_tag.trigger %></td>
+        <td>
+          <span class="badge badge-default"><%= person_tag.tag %></span> <em><small>x</small>1</em>
+        </td>
+        <td><%= link_to person_tag.trigger.name, person_tag.trigger if person_tag.trigger %></td>
       </tr>
     <% end %>
   </tbody>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190828060815) do
+ActiveRecord::Schema.define(version: 20190317235153) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -32,8 +32,6 @@ ActiveRecord::Schema.define(version: 20190828060815) do
     t.integer  "child_list_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.index ["child_list_id"], name: "index_familial_list_relationships_on_child_list_id"
-    t.index ["parent_list_id"], name: "index_familial_list_relationships_on_parent_list_id"
   end
 
   create_table "list_inclusions", force: :cascade do |t|

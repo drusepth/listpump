@@ -4,7 +4,6 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    lists_with_parents = FamilialListRelationship.pluck(:parent_list_id)
     @lists = List.all
   end
 

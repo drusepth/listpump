@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  list_inclusion: one
+  title: MyString
+  body: MyString
+  person: one
+  posted_at: 2019-08-28 15:15:26
+  source_url: MyString
+
+two:
+  list_inclusion: two
+  title: MyString
+  body: MyString
+  person: two
+  posted_at: 2019-08-28 15:15:26
+  source_url: MyString

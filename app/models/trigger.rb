@@ -16,7 +16,7 @@ class Trigger < ApplicationRecord
       if matchdata = Regexp.new(self.pattern, Regexp::IGNORECASE).match(search_result.title + "\n" + search_result.selftext)
         person = Person.find_or_create_by(name: search_result.author.name, medium: 'reddit')
 
-        ListInclusion.unscoped.find_or_create_by(
+        inclusion = ListInclusion.unscoped.find_or_create_by(
           list:         self.list,
           person:       person,
           trigger:      self,
@@ -26,8 +26,16 @@ class Trigger < ApplicationRecord
           posted_at:    Time.at(search_result.created)
         )
 
+        inclusion.list_inclusion_sources.find_or_create_by(
+          title:      search_result.title,
+          body:       search_result.selftext,
+          person:     person,
+          posted_at:  Time.at(search_result.created),
+          source_url: "https://www.reddit.com#{search_result.permalink}"
+        )
+
         self.user_tags_applied.each do |tag_text|
-          person.person_tags.create(tag: tag_text)
+          person.person_tags.find_or_create_by(tag: tag_text, trigger: self)
         end
       end
     end

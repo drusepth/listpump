@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190828195230) do
+ActiveRecord::Schema.define(version: 20190828201526) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -32,6 +32,19 @@ ActiveRecord::Schema.define(version: 20190828195230) do
     t.integer  "child_list_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "list_inclusion_sources", force: :cascade do |t|
+    t.integer  "list_inclusion_id"
+    t.string   "title"
+    t.string   "body"
+    t.integer  "person_id"
+    t.datetime "posted_at"
+    t.string   "source_url"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["list_inclusion_id"], name: "index_list_inclusion_sources_on_list_inclusion_id"
+    t.index ["person_id"], name: "index_list_inclusion_sources_on_person_id"
   end
 
   create_table "list_inclusions", force: :cascade do |t|

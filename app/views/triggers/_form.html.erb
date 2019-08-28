@@ -57,6 +57,20 @@
     </div>
   </div>
 
+  <%= text_field_tag "other_photos[]" %> 
+  <div class="form-group row">
+    <%= f.label :user_tag, class: 'col-sm-2 col-form-label' %>
+    <div class="col-sm-10">
+      <div class="form-inline">
+        <%= f.text_field :user_tags_applied, class: 'form-control', value: f.object.user_tags_applied.inspect %>
+      </div>
+      <div class="form-text text-muted">
+        You can specify any number of tags to automatically apply to a user when this trigger matches them. 
+        These tags are displayed on their profile, ordered by how many triggers have applied that tag.
+      </div>
+    </div>
+  </div>
+
   <%= f.hidden_field :list_id, value: f.object.list_id || params[:list_id], class: 'form-control' %>
 
   <div class="actions text-center">

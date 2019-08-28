@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190828063727) do
+ActiveRecord::Schema.define(version: 20190828191007) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -68,11 +68,12 @@ ActiveRecord::Schema.define(version: 20190828063727) do
     t.string   "name"
     t.string   "pattern"
     t.integer  "list_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "search_query"
-    t.boolean  "enabled",      default: true
+    t.boolean  "enabled",           default: true
     t.float    "confidence"
+    t.string   "user_tags_applied"
     t.index ["list_id"], name: "index_triggers_on_list_id"
   end
 

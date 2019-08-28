@@ -25,6 +25,9 @@ class TriggersController < ApplicationController
   # POST /triggers.json
   def create
     @trigger = Trigger.new(trigger_params)
+    # @trigger.user_tags_applied = trigger_params[:user_tags_applied]
+    require 'pry'
+    binding.pry
 
     respond_to do |format|
       if @trigger.save
@@ -69,6 +72,12 @@ class TriggersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trigger_params
-      params.require(:trigger).permit(:name, :pattern, :search_query, :list_id, :confidence, :enabled)
+      params.require(:trigger).permit(
+        # Fields
+        :name, :pattern, :search_query, :list_id, :confidence, :enabled, 
+
+        # Relations
+        { user_tags_applied: [] }
+      )
     end
 end

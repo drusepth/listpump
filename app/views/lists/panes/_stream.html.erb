@@ -21,6 +21,10 @@
           <span style="color: gray; font-size: 80%">
             <%= time_ago_in_words inclusion.posted_at %> ago
           </span>
+          <%= form_for inclusion, method: :put  do |f| %>
+            <%= f.hidden_field :flagged_invalid_at, value: DateTime.current.to_s %>
+            <%= f.submit 'Flag invalid', style: 'float: right' %>
+          <% end %>
         </td>
       </tr>
     <% end %>

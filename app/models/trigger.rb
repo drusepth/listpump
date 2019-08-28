@@ -4,6 +4,7 @@ class Trigger < ApplicationRecord
   has_many :list_inclusions, dependent: :destroy
   has_many :people, through: :list_inclusions
 
+  attr_accessor :user_tags_applied_string
   serialize :user_tags_applied, Array
 
   validates_presence_of :list, :search_query

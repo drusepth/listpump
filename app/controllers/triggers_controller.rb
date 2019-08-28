@@ -25,9 +25,7 @@ class TriggersController < ApplicationController
   # POST /triggers.json
   def create
     @trigger = Trigger.new(trigger_params)
-    # @trigger.user_tags_applied = trigger_params[:user_tags_applied]
-    require 'pry'
-    binding.pry
+    @trigger.user_tags_applied = trigger_params[:user_tags_applied_string].split(',')
 
     respond_to do |format|
       if @trigger.save
@@ -44,7 +42,10 @@ class TriggersController < ApplicationController
   # PATCH/PUT /triggers/1.json
   def update
     respond_to do |format|
-      if @trigger.update(trigger_params)
+      sanitized_params = trigger_params.clone.tap {|p|
+        p[:user_tags_applied] = p[:user_tags_applied_string].split(',')
+      }
+      if @trigger.update(sanitized_params)
         format.html { redirect_to @trigger.list, notice: 'Trigger was successfully updated.' }
         format.json { render :show, status: :ok, location: @trigger }
       else
@@ -73,11 +74,7 @@ class TriggersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def trigger_params
       params.require(:trigger).permit(
-        # Fields
-        :name, :pattern, :search_query, :list_id, :confidence, :enabled, 
-
-        # Relations
-        { user_tags_applied: [] }
+        :name, :pattern, :search_query, :list_id, :confidence, :enabled, :user_tags_applied_string
       )
     end
 end

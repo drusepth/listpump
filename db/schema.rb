@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190828191007) do
+ActiveRecord::Schema.define(version: 20190828193958) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -62,6 +62,14 @@ ActiveRecord::Schema.define(version: 20190828191007) do
     t.string   "medium"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "person_tags", force: :cascade do |t|
+    t.integer  "person_id"
+    t.string   "tag"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_person_tags_on_person_id"
   end
 
   create_table "triggers", force: :cascade do |t|

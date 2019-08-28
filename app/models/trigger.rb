@@ -14,15 +14,18 @@ class Trigger < ApplicationRecord
     puts "Executing trigger #{self.id}"
     RedditSearchService.search(self.search_query).map do |search_result|
       if matchdata = Regexp.new(self.pattern, Regexp::IGNORECASE).match(search_result.title + "\n" + search_result.selftext)
+        person = Person.find_or_create_by(name: search_result.author.name, medium: 'reddit')
+
         ListInclusion.unscoped.find_or_create_by(
           list:         self.list,
-          person:       Person.find_or_create_by(name: search_result.author.name, medium: 'reddit'),
+          person:       person,
           trigger:      self,
           matched_text: matchdata[0],
           trapped_text: matchdata.to_a.tap(&:shift).to_json,
           source_url:   "https://www.reddit.com#{search_result.permalink}",
           posted_at:    Time.at(search_result.created)
         )
+
       end
     end
   end

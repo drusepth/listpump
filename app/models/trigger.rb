@@ -8,6 +8,7 @@ class Trigger < ApplicationRecord
   has_many :people, through: :list_inclusions
 
   def run
+    puts "Executing trigger #{self.id}"
     RedditSearchService.search(self.search_query).map do |search_result|
       if matchdata = Regexp.new(self.pattern, Regexp::IGNORECASE).match(search_result.title + "\n" + search_result.selftext)
         ListInclusion.find_or_create_by(

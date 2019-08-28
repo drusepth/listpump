@@ -10,6 +10,7 @@ class PeopleController < ApplicationController
   # GET /people/1
   # GET /people/1.json
   def show
+    @tags = @person.person_tags.includes(:trigger) # todo sort by number of matches, then uniq
   end
 
   # GET /people/new

@@ -26,6 +26,9 @@ class Trigger < ApplicationRecord
           posted_at:    Time.at(search_result.created)
         )
 
+        self.user_tags_applied.each do |tag_text|
+          person.person_tags.create(tag: tag_text)
+        end
       end
     end
   end

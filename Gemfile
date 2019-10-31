@@ -6,20 +6,23 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.2'
-gem 'puma', '~> 3.0'
+gem 'puma'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
 
 gem 'jquery-rails'
-gem 'turbolinks', '~> 5'
-gem 'jbuilder', '~> 2.5'
+gem 'turbolinks'
+gem 'jbuilder'
 
 gem 'redd'
 
-gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
+gem 'bootstrap'
 gem 'rails-assets-bootstrap-toggle', source: 'https://rails-assets.org'
 gem 'material_icons'
+
+# This gem is broken. We include the CSS from the CDN in application.html instead.
+# gem 'materialize-sass'
 
 gem 'sqlite3', '~> 1.3.6'
 

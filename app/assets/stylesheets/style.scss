@@ -1,3 +1,28 @@
+html, body, * {
+  color: white;
+}
+
+a {
+  color: red;
+  font-weight: bold;
+
+  &:hover {
+    color: white;
+  }
+}
+
 h1 {
-  font-size: 32px !important;
+  font-size: 32px;
+}
+
+.footer {
+  margin-top: 140px;
+}
+
+.navbar {
+  margin-bottom: 50px;
+}
+
+.navbar-brand {
+  padding: 0 14px;
 }

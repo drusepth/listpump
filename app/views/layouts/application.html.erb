@@ -4,6 +4,7 @@
     <title>Listpump</title>
     <%= csrf_meta_tags %>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -11,17 +12,16 @@
 
   <body class="black white-text">
 
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-      <%= link_to 'Listpump', root_path, class: 'navbar-brand' %>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded black">
+      <%= link_to 'Listpump', root_path, class: 'navbar-brand red white-text' %>
+
       <ul class="navbar-nav">
         <li class="nav-item">
-          <%= link_to 'Log in', 'yeah right', class: 'nav-link' %>
+          <%= link_to 'Log in', 'yeah right', class: 'nav-link white-text' %>
         </li>
       </ul>
     </nav>
-  </div>
 
-    <br />
     <div class="container">
       <% if notice %>
         <div class="alert alert-info alert-dismissible fade show" role="alert">
@@ -36,7 +36,7 @@
     </div>
 
     <div class="footer">
-      <div class="versionstring">
+      <div class="grey-text center">
         v<%= `git log | grep commit | wc -l`.strip %> <%= `git log | head -n 1` %>
       </div>
     </div>

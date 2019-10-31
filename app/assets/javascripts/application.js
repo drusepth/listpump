@@ -16,6 +16,5 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require bootstrap-toggle
-//= require materialize
 //= require_tree .
 

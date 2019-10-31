@@ -17,12 +17,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'redd'
 
-# Phasing out these gems
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 gem 'rails-assets-bootstrap-toggle', source: 'https://rails-assets.org'
-
-# Phasing in these gems
-gem 'materialize-sass', '~> 1.0.0'
 gem 'material_icons'
 
 gem 'sqlite3', '~> 1.3.6'

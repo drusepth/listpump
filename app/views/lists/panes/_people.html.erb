@@ -14,10 +14,12 @@
       <tr>
         <td>
           <%= link_to person.name, person %>
-          <span class="badge badge-default"><%= link_to person.medium, "https://www.reddit.com/u/#{person.name}", class: 'text-white' %></span>
+          <%= link_to "https://www.reddit.com/u/#{person.name}" do %>
+            <%= fa_icon 'reddit' %>
+          <% end %>
         </td>
         <td>
-          <span class="badge badge-danger">
+          <span class="badge red white-text">
             <%# TODO: Performance code smell %>
             <%= Trigger.where(id: person.list_inclusions.where(list_id: list.id).pluck(:trigger_id)).sum(:confidence) %>
           </span>

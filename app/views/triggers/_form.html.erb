@@ -2,77 +2,65 @@
   <% if trigger.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(trigger.errors.count, "error") %> prohibited this trigger from being saved:</h2>
-
       <ul>
-      <% trigger.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% trigger.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-
-  <div class="form-group row">
-    <%= f.label :name, class: 'col-sm-2 col-form-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :name, class: 'form-control', placeholder: 'Name your trigger' %>
-      <div class="form-text text-muted">
-        This is just for your own reference and can be literally anything you want.
-      </div>
+  <div class="row">
+    <%= f.label :name, class: 'white-text' %>
+    <%= f.text_field :name, class: 'white-text', placeholder: 'Name your trigger' %>
+    <div class="white-text">
+      This is just for your own reference and can be literally anything you want.
     </div>
   </div>
 
-  <div class="form-group row">
-    <%= f.label :search_query, class: 'col-sm-2 col-form-label' %>
-    <div class="col-sm-10">
-      <%= f.text_field :search_query, class: 'form-control', placeholder: 'This phrase will be searched across social media' %>
-      <div class="form-text text-muted">
-        This phrase will be searched exactly, and will only find results that fully match it.
-      </div>
+  <div class="row">
+    <%= f.label :search_query, class: 'white-text' %>
+    <%= f.text_field :search_query, class: 'white-text', placeholder: 'This phrase will be searched across social media' %>
+    <div class="white-text">
+      This phrase will be searched exactly, and will only find results that fully match it.
     </div>
   </div>
 
-  <div class="form-group row">
-    <%= f.label :pattern, class: 'col-sm-2 col-form-label' %>
-    <div class="col-sm-10">
-      <div class="form-inline">
-        /<%= f.text_field :pattern, class: 'form-control', placeholder: '(regular expression)' %>/
-      </div>
-      <div class="form-text text-muted">
-        Whenever a search result matches this regular expression, the trigger will activate.
-        <%= link_to 'Regex reference', 'https://www.rubular.com' %>.
-      </div>
+  <div class="row">
+    <%= f.label :pattern, class: 'white-text' %>
+    <div style="display: inline">
+      /<%= f.text_field :pattern, class: 'white-text', placeholder: '(regular expression)' %>/
+    </div>
+    <div class="white-text">
+      Whenever a search result matches this regular expression, the trigger will activate.
+      <%= link_to 'Regex reference', 'https://www.rubular.com' %>.
     </div>
   </div>
 
-  <div class="form-group row">
-    <%= f.label :confidence, class: 'col-sm-2 col-form-label' %>
-    <div class="col-sm-10">
-      <div class="form-inline">
-        <%= f.text_field :confidence, class: 'form-control', value: f.object.confidence || 1.0 %>
-      </div>
-      <div class="form-text text-muted">
-        You can assign this trigger a confidence score that applies per-user in each list.
-      </div>
+  <div class="row">
+    <%= f.label :confidence, class: 'white-text' %>
+    <div class="form-inline">
+      <%= f.text_field :confidence, class: 'white-text', value: f.object.confidence || 1.0 %>
+    </div>
+    <div class="white-text">
+      You can assign this trigger a confidence score that applies per-user in each list.
     </div>
   </div>
 
-  <div class="form-group row">
-    <%= f.label :user_tags, class: 'col-sm-2 col-form-label' %>
-    <div class="col-sm-10">
-      <div class="form-inline">
-        <%= f.text_field :user_tags_applied_string, class: 'form-control', value: f.object.user_tags_applied.join(',') %>
-      </div>
-      <div class="form-text text-muted">
-        You can specify any number of comma-separated tags to automatically apply to a user when this trigger matches them. 
-        These tags are displayed on their profile, ordered by how many triggers have applied that tag.
-      </div>
+  <div class="row">
+    <%= f.label :user_tags, class: 'white-text' %>
+    <div class="form-inline">
+      <%= f.text_field :user_tags_applied_string, class: 'white-text', value: f.object.user_tags_applied.join(',') %>
+    </div>
+    <div class="white-text">
+      You can specify any number of comma-separated tags to automatically apply to a user when this trigger matches them. 
+      These tags are displayed on their profile, ordered by how many triggers have applied that tag.
     </div>
   </div>
 
-  <%= f.hidden_field :list_id, value: f.object.list_id || params[:list_id], class: 'form-control' %>
+  <%= f.hidden_field :list_id, value: f.object.list_id || params[:list_id] %>
 
   <div class="actions text-center">
-    <%= f.submit(trigger.persisted? ? 'Update' : 'Create', class: 'btn btn-primary') %>
+    <%= f.submit((trigger.persisted? ? 'Update' : 'Create') + " trigger", class: 'btn red white-text') %>
   </div>
 <% end %>

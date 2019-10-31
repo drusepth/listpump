@@ -15,12 +15,12 @@
     <% triggers.order(:name).each do |trigger| %>
       <tr>
         <td><%= link_to trigger.name, trigger %></td>
-        <td><span class="badge badge-primary"><%= trigger.search_query %></span></td>
-        <td><span class="badge badge-info">/<%= trigger.pattern %>/</span></td>
-        <td><span class="badge badge-danger"><%= trigger.confidence %></span></td>
+        <td><span class="badge blue white-text"><%= trigger.search_query %></span></td>
+        <td><span class="badge blue white-text">/<%= trigger.pattern %>/</span></td>
+        <td><span class="badge red white-text"><%= trigger.confidence %></span></td>
         <td>
           <% trigger.user_tags_applied.each do |tag_text| %>
-            <span class="badge badge-default"><%= tag_text %></span>
+            <span class="badge grey white-text"><%= tag_text %></span>
           <% end %>
         </td>
         <td>
@@ -37,11 +37,11 @@
 
 <div class="row">
   <div class="col-sm-12">
-    <div class="card">
-      <div class="card-header">
+    <div class="card-panel grey darken-1 white-text">
+      <h2>
         Add <%= triggers.any? ? 'another' : 'a' %> trigger
-      </div>
-      <div class="card-block">
+      </h2>
+      <div>
         <%= render partial: 'triggers/form', locals: { trigger: Trigger.new(list: @list) } %>
       </div>
     </div>

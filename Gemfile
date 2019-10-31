@@ -19,6 +19,7 @@ gem 'redd'
 
 gem 'bootstrap', git: 'https://github.com/twbs/bootstrap-rubygem'
 gem 'rails-assets-bootstrap-toggle', source: 'https://rails-assets.org'
+gem 'materialize-sass', '~> 1.0.0'
 
 group :production do
   gem 'pg'

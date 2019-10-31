@@ -1,57 +1,57 @@
-<br />
-<div class="jumbotron">
-  <h1 class="display-4">
-    <%= list.name %>
-  </h1>
-  <p class="lead text-justify">
-    <%= list.description || 'This is a list managed by Listpump.' %>
-  </p>
+<div class="row">
+  <div class="col s12">
+    <div class="card-panel red">
+      <h1 class="display-4">
+        <%= list.name %>
+      </h1>
+      <p class="lead text-justify">
+        <%= list.description || 'This is a list managed by Listpump.' %>
+      </p>
+      <p>
+        created <%= time_ago_in_words list.created_at %> ago
+      </p>
+    </div>
+  </div>
 </div>
 
 <div class="row">
-  <div class="col-sm-12 col-md-6">
-    <div class="card">
-      <div class="card-header">
-        Triggers
-        <span class="badge badge-default <%= list.triggers.any? ? 'badge-success' : 'badge-danger' %>">
-          <%= list.triggers.count %> configured
-        </span>
-      </div>
-      <div class="card-block">
-        <p class="card-text">
-          When someone says something on social media that activates a list's trigger, Listpump will automatically add them to that list.
-        </p>
-        <%= link_to 'Add a trigger', new_trigger_path(list_id: list.id), class: "btn btn-primary" %>
-      </div>
+  <div class="col s12 m6">
+    <div class="card-panel grey">
+      <span class="badge badge-default white-text <%= list.triggers.any? ? 'green' : 'red' %>">
+        <%= list.triggers.count %> configured
+      </span>
+      <h2 class="black-text">Triggers</h2>
+      <p class="black-text">
+        When someone says something on social media that activates a list's trigger, Listpump will automatically add them to that list.
+      </p>
+      <p class="center">
+        <%= link_to 'Add a trigger', new_trigger_path(list_id: list.id), class: "btn red white-text" %>
+      </p>
     </div>
   </div>
-  <div class="col-sm-12 col-md-6">
-    <div class="card">
-      <div class="card-header">
-        People
-        <span class="badge badge-default <%= list.persons.any? ? 'badge-success' : 'badge-danger' %>">
-          <%= list.persons.count %> on this list
-        </span>
-      </div>
-      <div class="card-block">
-        <p class="card-text">
-          When someone says something on social media that activates a list's trigger, Listpump will automatically add them to that list.
-          The following 20 persons of interest have been flagged for this list the highest number of times.
-        </p>
-        <ul>
-          <%
-            ids_and_counts = ListInclusion.where(list_id: list.id).group(:person_id).order('count_id DESC').limit(20).count(:id)
-          %>
 
-          <% ids_and_counts.each do |id, count| %>
-            <% person = Person.find(id) %>
-            <li>
-              <%= link_to person.name, person %>
-              (flagged <%= pluralize count, 'time' %>)
-            </li>
-          <% end %>
-        </ul>
-      </div>
+  <div class="col s12 m6">
+    <div class="card-panel grey">
+      <span class="badge badge-default white-text <%= list.persons.any? ? 'green' : 'red' %>">
+        <%= list.persons.count %> on this list
+      </span>
+      <h2 class="black-text">People</h2>
+      <p class="black-text">
+        When someone says something on social media that activates a list's trigger, Listpump will automatically add them to that list.
+        The following 20 persons of interest have been flagged for this list the highest number of times.
+      </p>
+      <ul>
+        <%
+          ids_and_counts = ListInclusion.where(list_id: list.id).group(:person_id).order('count_id DESC').limit(20).count(:id)
+        %>
+        <% ids_and_counts.each do |id, count| %>
+          <% person = Person.find(id) %>
+          <li>
+            <%= link_to person.name, person %>
+            (flagged <%= pluralize count, 'time' %>)
+          </li>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>

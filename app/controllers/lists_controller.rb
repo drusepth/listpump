@@ -10,7 +10,7 @@ class ListsController < ApplicationController
   # GET /lists/1
   # GET /lists/1.json
   def show
-    @people        = @list.persons.includes(:list_inclusions).uniq
+    @people        = @list.persons.includes(:list_inclusions).distinct
     @triggers      = @list.triggers
     @inclusions    = @list.list_inclusions.includes(:person).order('posted_at desc')
     @parent_lists  = @list.parent_lists

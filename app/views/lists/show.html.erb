@@ -5,25 +5,25 @@
   <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#stream" role="tab">
       Stream
-      <span class="badge badge-default <%= @inclusions.any? ? 'badge-success' : 'badge-danger' %>"><%= @inclusions.count > 500 ? '500+' : @inclusions.count %></span>
+      <span class="badge badge-default white-text <%= @inclusions.any? ? 'green' : 'red' %>"><%= @inclusions.count > 500 ? '500+' : @inclusions.count %></span>
     </a>
   </li>
   <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#people" role="tab">
       People
-      <span class="badge badge-default <%= @people.any? ? 'badge-success' : 'badge-danger' %>"><%= @people.count %></span>
+      <span class="badge badge-default white-text <%= @people.any? ? 'green' : 'red' %>"><%= @people.count %></span>
     </a>
   </li>
   <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#triggers" role="tab">
       Triggers
-      <span class="badge badge-default <%= @triggers.any? ? 'badge-success' : 'badge-danger' %>"><%= @triggers.count %></span>
+      <span class="badge badge-default white-text <%= @triggers.any? ? 'green' : 'red' %>"><%= @triggers.count %></span>
     </a>
   </li>
   <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#related-lists" role="tab">
       Related lists
-      <span class="badge badge-default badge-info">
+      <span class="badge badge-default blue white-text">
         <%= @parent_lists.count + @child_lists.count + @sibling_lists.count %>
       </span>
     </a>

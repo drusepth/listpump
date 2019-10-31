@@ -9,22 +9,30 @@
     <% inclusions.each do |inclusion| %>
       <tr>
         <td>
-          <%= link_to inclusion.person.name, inclusion.person %>
-          <span class="badge badge-default"><%= link_to inclusion.person.medium, "https://www.reddit.com/u/#{inclusion.person.name}", class: 'text-white' %></span>
-          said
-          "<blockquote style="display: inline; background: lightcyan"><%= inclusion.matched_text %></blockquote>"
-          at
-          <%= link_to 'this link', inclusion.source_url %>
-          and activated the
-          <%= link_to inclusion.trigger.name, inclusion.trigger %>
-          trigger.
-          <span style="color: gray; font-size: 80%">
-            <%= time_ago_in_words inclusion.posted_at %> ago
-          </span>
           <%= form_for inclusion, method: :put  do |f| %>
             <%= f.hidden_field :flagged_invalid_at, value: DateTime.current.to_s %>
-            <%= f.submit 'Flag invalid', style: 'float: right' %>
+            <%= f.submit 'Remove flag', class: 'right btn red black-text' %>
           <% end %>
+          
+          <p class="white-text">
+            <%= link_to inclusion.person.name, inclusion.person %>
+              <%= link_to "https://www.reddit.com/u/#{inclusion.person.name}" do %>
+                <%= fa_icon 'reddit' %>
+              <% end %>
+            at
+            <%= link_to 'this link', inclusion.source_url %>
+            said:
+          </p>
+          <blockquote><%= inclusion.matched_text %></blockquote>
+          <p>
+            <small class="grey-text">
+              Posted <%= time_ago_in_words inclusion.posted_at %> ago
+            </small>
+          </p>
+          <p>
+            Trigger activated:
+            <%= link_to inclusion.trigger.name, inclusion.trigger %>
+          </p>
         </td>
       </tr>
     <% end %>

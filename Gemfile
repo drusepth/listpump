@@ -20,6 +20,7 @@ gem 'redd'
 gem 'bootstrap'
 gem 'rails-assets-bootstrap-toggle', source: 'https://rails-assets.org'
 gem 'material_icons'
+gem 'font-awesome-rails'
 
 # This gem is broken. We include the CSS from the CDN in application.html instead.
 # gem 'materialize-sass'

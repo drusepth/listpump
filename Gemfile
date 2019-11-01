@@ -25,7 +25,7 @@ gem 'font-awesome-rails'
 # This gem is broken. We include the CSS from the CDN in application.html instead.
 # gem 'materialize-sass'
 
-gem 'sqlite3', '~> 1.3.6'
+# gem 'sqlite3', '~> 1.3.6'
 
 group :production do
   gem 'pg'

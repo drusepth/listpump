@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_03_223147) do
+ActiveRecord::Schema.define(version: 2019_11_03_225726) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 2019_11_03_223147) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_categorizations_on_category_id"
     t.index ["list_id"], name: "index_categorizations_on_list_id"
+  end
+
+  create_table "credit_purchases", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "credits"
+    t.integer "paid_cents"
+    t.datetime "paid_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_credit_purchases_on_user_id"
   end
 
   create_table "familial_list_relationships", force: :cascade do |t|
@@ -68,6 +78,8 @@ ActiveRecord::Schema.define(version: 2019_11_03_223147) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "description"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -108,6 +120,7 @@ ActiveRecord::Schema.define(version: 2019_11_03_223147) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "credits", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

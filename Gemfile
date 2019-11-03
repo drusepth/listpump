@@ -10,6 +10,7 @@ gem 'puma'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'coffee-rails'
+gem 'sidekiq'
 
 gem 'jquery-rails'
 gem 'turbolinks'

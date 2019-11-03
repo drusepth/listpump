@@ -16,9 +16,15 @@
       <%= link_to 'Listpump', root_path, class: 'navbar-brand red white-text' %>
 
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <%= link_to 'Log in', new_user_session_path, class: 'nav-link white-text' %>
-        </li>
+        <% if !user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to 'Log in', new_user_session_path, class: 'nav-link white-text' %>
+          </li>
+        <% else %>
+          <li class="nav-item red-text">
+            <%= pluralize current_user.credits, 'credit' %> remaining
+          </li>
+        <% end %>
       </ul>
     </nav>
 

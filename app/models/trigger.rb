@@ -10,8 +10,14 @@ class Trigger < ApplicationRecord
   validates_presence_of :list, :search_query
   before_save :validate_pattern_as_regexp
 
+  after_save do
+    ProcessListTriggersWorker.perform_async(list.id) if list.user.credits > 0
+  end
+
   def run
     puts "Executing trigger #{self.id}"
+    owner = list.user
+
     RedditSearchService.search(self.search_query).map do |search_result|
       if matchdata = Regexp.new(self.pattern, Regexp::IGNORECASE).match(search_result.title + "\n" + search_result.selftext)
         person = Person.find_or_create_by(name: search_result.author.name, medium: 'reddit')
@@ -37,8 +43,12 @@ class Trigger < ApplicationRecord
         self.user_tags_applied.each do |tag_text|
           person.person_tags.find_or_create_by(tag: tag_text, trigger: self)
         end
+
+        owner.credits -= 1
       end
     end
+
+    owner.save
   end
 
   def validate_pattern_as_regexp

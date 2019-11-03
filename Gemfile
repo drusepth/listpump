@@ -15,6 +15,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
 
+gem 'devise'
+
 gem 'redd'
 
 gem 'bootstrap'
@@ -32,7 +34,7 @@ group :production do
 end
 
 group :development, :test do
-  # gem 'sqlite3'
+  gem 'sqlite3'
   gem 'byebug', platform: :mri
 end
 
